@@ -4,19 +4,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Job Listings With Filtering</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="/assets/styles/style.css">
 
     <link rel="shortcut icon" href="/assets/images/favicon-32x32.png" type="image/x-icon">
 </head>
 
 <body>
-    
+    <header>
+        <h1 class="visibility-hidden">
+            Job listings
+        </h1>
+    </header>
+    <main>
+        <section class="filters">
+            <h2 class="visibility-hidden">Vacancies filter</h2>
+            <ul class="filter-list">
+                <li><button></button></li>
+                <li><button></button></li>
+                <li><button></button></li>
+            </ul>
+            <button>Clear</button>
+        </section>
+        <section class="jobs-list">
+            <h2 class="visibility-hidden">Vacancies</h2>
+            <div class="jobs__list">
+                <template id="job-card-template">
+                    <article class="job-card">
+                        <img class="job-card-logo" src="" alt="">
+                        <div class="job-card-content">
+                            <div class="job-card-eyebrow">
+                                <p class="job-card-company"></p>
+                                <ul class="job-card-status"></ul>
+                            </div>
+                            <h3 class="job-card-title">
+                                <a href="#"></a>
+                            </h3>
+                            <ul class="job-card-meta"></ul>
+                        </div>
+                        <ul class="job-card-tags"></ul>
+                    </article>
+                </template>
+            </div>
+        </section>
+    </main>
     <script src="/assets/scripts/main.js"></script>
 </body>
 
