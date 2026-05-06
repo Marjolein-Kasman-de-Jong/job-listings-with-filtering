@@ -36,6 +36,19 @@ video {
     max-width: 100%;
 }
 
+/* Colors */
+
+:root {
+    --white: #FFF;
+    --black: #000;
+    --gray-400: #7C8F8F;
+    --gray-300: #B7C4C4;
+    --green-900: #2B3939;
+    --green-400: #5CA5A5;
+    --green-350: #63BABA;
+    --green-50: #EFFAFA;
+}
+
 /* Typography */
 
 [class^='text-preset'] {
