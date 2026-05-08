@@ -24,7 +24,7 @@
     </header>
     <main>
         <section class="filters">
-            <h2 class="visibility-hidden">Vacancies filter</h2>
+            <h2 class="visibility-hidden">Jobs filter</h2>
             <ul class="filter-list">
                 <li><button></button></li>
                 <li><button></button></li>
@@ -32,23 +32,23 @@
             </ul>
             <button>Clear</button>
         </section>
-        <section class="jobs-list">
-            <h2 class="visibility-hidden">Vacancies</h2>
-            <div class="jobs__list">
+        <section class="jobs">
+            <h2 class="visibility-hidden">Jobs list</h2>
+            <div id="jobs-list" class="jobs-list">
                 <template id="job-card-template">
                     <article class="job-card">
-                        <img class="job-card-logo" src="" alt="">
+                        <img id="job-card-logo" class="job-card-logo" src="url" alt="alt tekst">
                         <div class="job-card-content">
                             <div class="job-card-eyebrow">
-                                <p class="job-card-company"></p>
-                                <ul class="job-card-status"></ul>
+                                <p id="job-card-company" class="job-card-company"></p>
+                                <ul id="job-card-status" class="job-card-status"></ul>
                             </div>
-                            <h3 class="job-card-title">
+                            <h3 id="job-card-title" class="job-card-title">
                                 <a href="#"></a>
                             </h3>
-                            <ul class="job-card-meta"></ul>
+                            <ul id="job-card-meta" class="job-card-meta"></ul>
                         </div>
-                        <ul class="job-card-tags"></ul>
+                        <ul id="job-card-tags" class="job-card-tags"></ul>
                     </article>
                 </template>
             </div>
