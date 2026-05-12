@@ -24,11 +24,19 @@ document.addEventListener('DOMContentLoaded', async (e) => {
 
             const jobCard = jobCardTemplate.content.cloneNode(true);
 
-            const statusList = jobCard.getElementById("job-card-status");
+            const eyebrow = jobCard.getElementById("job-card-eyebrow");
             const metaList = jobCard.getElementById("job-card-meta");
             const tagsList = jobCard.getElementById("job-card-tags");
-            
+
+            const hasStatus = newJob || featured;
             const tags = [];
+
+            function createUL(parentNode, id, className) {
+                const ul = document.createElement("ul");
+                ul.id = id;
+                ul.className = className;
+                parentNode.appendChild(ul);
+            };
 
             function createLI(textContent, list) {
                 const li = document.createElement("li");
@@ -41,14 +49,22 @@ document.addEventListener('DOMContentLoaded', async (e) => {
 
             jobCard.getElementById("job-card-company").textContent = company;
 
-            [
-                [newJob, "new"],
-                [featured, "featured"]
-            ].forEach(([status, text]) => {
-                if (status) {
-                    createLI(text, statusList);
-                };
-            });
+            if (hasStatus) {
+                const statuses = [
+                    [newJob, "new"],
+                    [featured, "featured"]
+                ];
+
+                createUL(eyebrow, "job-card-status", "job-card-status");
+
+                const statusList = jobCard.getElementById("job-card-status");
+
+                statuses.forEach(([status, text]) => {
+                    if (status) {
+                        createLI(text, statusList);
+                    };
+                });
+            };
 
             jobCard.querySelector("#job-card-title a").textContent = position;
 
@@ -57,7 +73,9 @@ document.addEventListener('DOMContentLoaded', async (e) => {
                 contract,
                 location
             ].forEach((item) => {
-                createLI(item, metaList);
+                if (item.length > 0) {
+                    createLI(item, metaList);
+                };
             });
 
             [
