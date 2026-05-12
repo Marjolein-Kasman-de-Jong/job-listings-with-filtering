@@ -54,11 +54,14 @@ document.addEventListener('DOMContentLoaded', async (e) => {
                     [newJob, "new"],
                     [featured, "featured"]
                 ];
+
                 createUL(eyebrow, "job-card-status", "job-card-status");
+
+                const statusList = jobCard.getElementById("job-card-status");
 
                 statuses.forEach(([status, text]) => {
                     if (status) {
-                        createLI(text, jobCard.getElementById("job-card-status"));
+                        createLI(text, statusList);
                     };
                 });
             };
