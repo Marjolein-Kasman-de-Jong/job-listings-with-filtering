@@ -57,7 +57,9 @@ document.addEventListener('DOMContentLoaded', async (e) => {
                 contract,
                 location
             ].forEach((item) => {
-                createLI(item, metaList);
+                if (item.length > 0) {
+                    createLI(item, metaList);
+                };
             });
 
             [
