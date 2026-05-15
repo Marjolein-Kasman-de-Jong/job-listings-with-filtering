@@ -1,12 +1,35 @@
 document.addEventListener('DOMContentLoaded', async (e) => {
+    const selectedFilters = [];
+
+    function addFilter(filter) {
+        selectedFilters.push(filter);
+        renderJobCards();
+        console.log(selectedFilters);
+    };
+
     async function renderJobCards() {
-        const response = await fetch('./data/data.json');
+        const response = await fetch("./data/data.json");
         const availableJobs = await response.json();
 
         const jobsListContainer = document.getElementById("jobs-list");
         const jobCardTemplate = document.getElementById("job-card-template");
 
-        availableJobs.forEach((job) => {
+        const filteredJobs = availableJobs.filter((job) => {
+            const tags = [
+                job.role,
+                job.level,
+                ...job.languages,
+                ...job.tools
+            ];
+
+            return selectedFilters.every((filter) => {
+                return tags.includes(filter);
+            });
+        });
+
+        jobsListContainer.innerHTML = "";
+
+        filteredJobs.forEach((job) => {
             const {
                 logo,
                 company,
@@ -37,9 +60,14 @@ document.addEventListener('DOMContentLoaded', async (e) => {
                 parentNode.appendChild(ul);
             };
 
-            function createLI(textContent, list) {
+            function createLI(textContent, list, clickHandler = null) {
                 const li = document.createElement("li");
                 li.textContent = textContent;
+
+                if (clickHandler) {
+                    li.addEventListener("click", clickHandler);
+                }
+
                 list.appendChild(li);
             };
 
@@ -91,7 +119,11 @@ document.addEventListener('DOMContentLoaded', async (e) => {
             });
 
             tags.forEach((tag) => {
-                createLI(tag, tagsList);
+                const clickHandler = () => {
+                    addFilter(tag);
+                };
+
+                createLI(tag, tagsList, clickHandler);
             });
 
             jobsListContainer.appendChild(jobCard);
