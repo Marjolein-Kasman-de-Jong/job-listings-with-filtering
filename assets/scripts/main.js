@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', async (e) => {
     const selectedFilters = [];
 
     // DOM references
+    const filterList = document.getElementById("filter-list");
+    const clearBtn = document.getElementById("clear-btn");
     const jobsListContainer = document.getElementById("jobs-list");
     const jobCardTemplate = document.getElementById("job-card-template");
 
@@ -43,6 +45,28 @@ document.addEventListener('DOMContentLoaded', async (e) => {
     // Actions
     function addFilter(filter) {
         selectedFilters.push(filter);
+
+        createLI(filter, filterList, (e) => removeFilter(filter, e.currentTarget));
+
+        renderJobCards();
+    };
+
+    function removeFilter(filter, filterElement) {
+        const index = selectedFilters.indexOf(filter);
+
+        if (index !== -1) {
+            selectedFilters.splice(index, 1);
+        }
+
+        filterElement.remove();
+
+        renderJobCards();
+    };
+
+    function clearFilters() {
+        selectedFilters.length = 0;
+        filterList.innerHTML = "";
+
         renderJobCards();
     };
 
@@ -109,6 +133,9 @@ document.addEventListener('DOMContentLoaded', async (e) => {
             jobsListContainer.appendChild(jobCard);
         });
     };
+
+    // Event listeners
+    clearBtn.addEventListener("click", clearFilters);
 
     renderJobCards();
 });
