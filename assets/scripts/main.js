@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
     // Data/state
     const response = await fetch("./data/data.json");
     const availableJobs = await response.json();
+
     const selectedFilters = [];
 
     // DOM references
@@ -44,6 +45,8 @@ document.addEventListener('DOMContentLoaded', async (e) => {
 
     // Actions
     function addFilter(filter) {
+        if (selectedFilters.includes(filter)) return;
+        
         selectedFilters.push(filter);
 
         createLI(filter, filterList, (e) => removeFilter(filter, e.currentTarget));
@@ -102,8 +105,9 @@ document.addEventListener('DOMContentLoaded', async (e) => {
 
             const tags = getTags(job);
 
-            jobCard.querySelector(".job-card-logo").src = logo;
-            jobCard.querySelector(".job-card-logo").alt = `${company} logo`;
+            const logoImage = jobCard.querySelector(".job-card-logo");
+            logoImage.src = logo;
+            logoImage.alt = `${company} logo`;
 
             jobCard.querySelector(".job-card-company").textContent = company;
 
