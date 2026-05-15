@@ -24,16 +24,15 @@ document.addEventListener('DOMContentLoaded', async (e) => {
 
             const jobCard = jobCardTemplate.content.cloneNode(true);
 
-            const eyebrow = jobCard.getElementById("job-card-eyebrow");
-            const metaList = jobCard.getElementById("job-card-meta");
-            const tagsList = jobCard.getElementById("job-card-tags");
+            const eyebrow = jobCard.querySelector(".job-card-eyebrow");
+            const metaList = jobCard.querySelector(".job-card-meta");
+            const tagsList = jobCard.querySelector(".job-card-tags");
 
             const hasStatus = newJob || featured;
             const tags = [];
 
-            function createUL(parentNode, id, className) {
+            function createUL(parentNode, className) {
                 const ul = document.createElement("ul");
-                ul.id = id;
                 ul.className = className;
                 parentNode.appendChild(ul);
             };
@@ -44,10 +43,10 @@ document.addEventListener('DOMContentLoaded', async (e) => {
                 list.appendChild(li);
             };
 
-            jobCard.getElementById("job-card-logo").src = logo;
-            jobCard.getElementById("job-card-logo").alt = `${company} logo`;
+            jobCard.querySelector(".job-card-logo").src = logo;
+            jobCard.querySelector(".job-card-logo").alt = `${company} logo`;
 
-            jobCard.getElementById("job-card-company").textContent = company;
+            jobCard.querySelector(".job-card-company").textContent = company;
 
             if (hasStatus) {
                 const statuses = [
@@ -55,9 +54,9 @@ document.addEventListener('DOMContentLoaded', async (e) => {
                     [featured, "featured"]
                 ];
 
-                createUL(eyebrow, "job-card-status", "job-card-status");
+                createUL(eyebrow, "job-card-status");
 
-                const statusList = jobCard.getElementById("job-card-status");
+                const statusList = jobCard.querySelector(".job-card-status");
 
                 statuses.forEach(([status, text]) => {
                     if (status) {
@@ -66,7 +65,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
                 });
             };
 
-            jobCard.querySelector("#job-card-title a").textContent = position;
+            jobCard.querySelector(".job-card-title a").textContent = position;
 
             [
                 postedAt,
