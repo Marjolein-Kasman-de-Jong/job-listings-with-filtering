@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
     const selectedFilters = [];
 
     // DOM references
+    const filtersSection = document.querySelector(".filters");
     const filterList = document.getElementById("filter-list");
     const clearBtn = document.getElementById("clear-btn");
     const jobsListContainer = document.getElementById("jobs-list");
@@ -75,6 +76,12 @@ document.addEventListener('DOMContentLoaded', async (e) => {
 
     // Rendering
     function renderJobCards() {
+        if (selectedFilters.length === 0) {
+            filtersSection.classList.add("hidden");
+        } else {
+            filtersSection.classList.remove("hidden");
+        }
+
         const filteredJobs = availableJobs.filter((availableJob) => {
             const tags = getTags(availableJob);
 
