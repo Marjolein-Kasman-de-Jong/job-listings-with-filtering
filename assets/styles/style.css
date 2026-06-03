@@ -141,6 +141,7 @@ body {
 }
 
 main {
+    position: relative;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -166,7 +167,10 @@ main {
 /* Section filters */
 
 .filters {
-    transform: translateY(-36px);
+    position: absolute;
+    top: -36px;
+    left: 50%;
+    transform: translateX(-50%);
     width: 87.2%;
     max-width: 1109px;
     min-height: 72px;
@@ -257,7 +261,93 @@ main {
 /* Section jobs */
 
 .jobs {
-    transform: translateY(-36px);
+    margin-top: 76px;
     width: 87.2%;
     max-width: 1109px;
+
+    .jobs-list {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        /* margin-top: 40px; */
+
+        .job-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 32px 41px 32px 45px;
+            background-color: var(--white);
+            border-radius: 5px;
+            box-shadow: 0 15px 20px -5px rgba(13, 113, 130, 0.15);
+
+            .wrapper {
+                display: flex;
+                gap: 24px;
+
+                .job-card-logo {
+                    width: 88px;
+                    height: 88px;
+                }
+
+                .job-card-content {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    gap: 8px;
+
+                    .job-card-eyebrow {
+                        display: flex;
+                        align-items: center;
+                        gap: 16px;
+
+                        .job-card-company {
+                            color: var(--green-400)
+                        }
+
+                        .job-card-status {
+                            display: flex;
+                            gap: 8px;
+                            list-style-type: none;
+                            text-transform: uppercase;
+
+                            li {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                padding-top: 3px;
+                                color: var(--white);
+                                border-radius: 20px;
+                            }
+
+                            .new {
+                                width: 51px;
+                                height: 26px;
+                                background-color: var(--green-400);
+                            }
+
+                            .featured {
+                                width: 78px;
+                                height: 26px;
+                                background-color: var(--green-900);
+                            }
+                        }
+                    }
+
+                    .job-card-title {
+                        a {
+                            text-decoration: none;
+                        }
+                    }
+
+                    .job-card-meta {
+                        display: flex;
+                    }
+                }
+            }
+
+            .job-card-tags {
+                display: flex;
+            }
+        }
+    }
 }

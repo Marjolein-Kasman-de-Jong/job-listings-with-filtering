@@ -42,12 +42,13 @@ document.addEventListener('DOMContentLoaded', async (e) => {
         }
 
         list.appendChild(li);
+        return li;
     };
 
     // Actions
     function addFilter(filter) {
         if (selectedFilters.includes(filter)) return;
-        
+
         selectedFilters.push(filter);
 
         createLI(filter, filterList, (e) => removeFilter(filter, e.currentTarget));
@@ -105,6 +106,15 @@ document.addEventListener('DOMContentLoaded', async (e) => {
             } = job;
 
             const jobCard = jobCardTemplate.content.cloneNode(true);
+            const jobCardElement = jobCard.querySelector(".job-card");
+
+            if (newJob) {
+                jobCardElement.classList.add("new-job");
+            }
+
+            if (featured) {
+                jobCardElement.classList.add("featured-job");
+            }
 
             const eyebrow = jobCard.querySelector(".job-card-eyebrow");
             const metaList = jobCard.querySelector(".job-card-meta");
@@ -119,10 +129,16 @@ document.addEventListener('DOMContentLoaded', async (e) => {
             jobCard.querySelector(".job-card-company").textContent = company;
 
             if (newJob || featured) {
-                const statusList = createUL(eyebrow, "job-card-status");
+                const statusList = createUL(eyebrow, "job-card-status text-preset-4-bold");
 
-                if (newJob) createLI("new", statusList);
-                if (featured) createLI("featured", statusList);
+                if (newJob) {
+                    const newLI = createLI("new!", statusList);
+                    newLI.classList.add("new");
+                }
+                if (featured) {
+                    const featuredLI = createLI("featured", statusList);
+                    featuredLI.classList.add("featured");
+                }
             };
 
             jobCard.querySelector(".job-card-title a").textContent = position;
