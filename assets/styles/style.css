@@ -268,7 +268,7 @@ main {
 
     .jobs-list {
         display: grid;
-        grid-template-columns: minmax(0, 1069px);
+        grid-template-columns: minmax(0, 1109px);
         gap: 24px;
 
         @media (768px <=width < 1024px) {
