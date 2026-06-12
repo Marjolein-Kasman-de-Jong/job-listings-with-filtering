@@ -168,10 +168,8 @@ main {
 /* Section filters */
 
 .filters {
-    position: absolute;
+    position: relative;
     top: -36px;
-    left: 50%;
-    transform: translateX(-50%);
     width: 87.2%;
     max-width: 1109px;
     min-height: 72px;
@@ -262,8 +260,31 @@ main {
 
 /* Section jobs */
 
-.jobs {
+.filters+.jobs {
+    margin-top: 4px;
+
+    @media (768px <=width < 1024px) {
+        margin-top: 28px;
+    }
+
+    @media (width <768px) {
+        margin-top: 28px;
+    }
+}
+
+.filters.hidden+.jobs {
     margin-top: 76px;
+
+    @media (768px <=width < 1024px) {
+        margin-top: 56px;
+    }
+
+    @media (width <768px) {
+        margin-top: 56px;
+    }
+}
+
+.jobs {
     width: 87.2%;
     max-width: 1109px;
 
